@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <@h.commonHead title="register"/>
+    <link rel="stylesheet" href="../../static/layui.css">
+</head>
+<body>
+ <div>
+     <div>${info!''}</div>
+     <form method="post" action="/test">
+         <div>
+             <i>用户名:</i>
+             <input type="text" name="name" placeholder="请输入您的用户名">
+         </div>
+         <div>
+             <i>密码:</i>
+             <input type="password" name="pwd" placeholder="请输入您的密码">
+         </div>
+         <div>
+             <i>确认密码:</i>
+             <input type="password" name="secondPwd" placeholder="请再次输入您的密码">
+         </div>
+         <input type="submit" value="提交">
+         <button type="button"><a href="/login">登录</a></button>
+
+     </form>
+
+ </div>
+
+<script src="../../static/layui/layui.js" charset="utf-8"></script>
+ </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <@h.commonHead title="登录页面"/>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css"  media="all">
+</head>
+<body>
+ <div>
+     <div>${info!''}</div>
+     <form method="post" action="/main">
+         <div>
+             <i>用户名：</i>
+             <input name="name" type="text" placeholder="请输入用户名：" value="">
+         </div>
+         <div>
+             <i>密码：</i>
+             <input name="pwd" type="password" placeholder="请输入您的密码：" value="">
+         </div>
+         <input type="submit" value="提交">
+         <button><a href="/register">注册</a></button>
+     </form>
+
+ </div>
+
+<script src="../../static/layui/layui.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

@@ -11,24 +11,29 @@ import java.util.List;
 @Controller
 public class HelloController {
 
-    @RequestMapping(value = "/hello")
-    public String hello(){
-        return "login";
+
+
+
+
+    @RequestMapping("admin")
+    public String admin(){
+        return "/admin/index";
     }
-    @ResponseBody
-    @RequestMapping("/")
-    public String h(){
-        return "sndfkjsknksld";
+    @RequestMapping("admin/login")
+    public String adminlogin(){
+        return "/admin/login";
     }
 
-    @RequestMapping("/index")
-    public String index(Model model){
-        List<String> list = new LinkedList<String>();
-        list.add("1");
-        list.add("2");
-        list.add("3");
-        list.add("4");
-        model.addAttribute("list",list);
-        return "index";
+    @RequestMapping("/page")
+    public String page(){
+        return "/system/page";
+    }
+    @RequestMapping("/flow")
+    public String flow(){
+        return "/system/flow";
+    }
+    @RequestMapping("/im")
+    public String im(){
+        return "/system/im";
     }
 }
