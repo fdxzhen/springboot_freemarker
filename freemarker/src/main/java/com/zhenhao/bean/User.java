@@ -10,7 +10,15 @@ public class User {
     private String name;
     private String pwd;
     private String secondPwd;
+    private String imgUrl;
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public int getId() {
         return id;

@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
 <#macro commonHead title>
     <title>${title}</title>
+<script src="../../static/common.js"></script>
 </#macro>
 
 <#macro footer>
@@ -10,4 +11,45 @@
     this is footer tag!
 </div>
 </#macro>
-</html>
+
+<#macro pagetoolbar page group="10" theme = "#009688" showDiv="laypageDiv" formId="searchForm">
+<script>
+    layui.use(['laypage'],function () {
+        var laypage = layui.laypage;
+        var prev = !${page.hasPreviousPage?c}?false:"上一页";
+        var next = !${page.hasNextPage?c}?false:"下一页";
+        var settings = {
+            elem:'${showDiv}',
+            count:${page.total},
+            limit:${page.pageSize},
+            curr:${page.pageNum},
+            groups:${group},
+            prev:prev,
+            next:next,
+            first:1,
+            last:${page.pages},
+            layout:['count','prev','page','next','limit','skip'],
+            theme:'${theme}',
+            skip:true,
+            jump:function (obj,first) {
+                if(!first){
+                    if("${page.pageNum}"!=obj.curr){
+                        $("[name='pageIndex']",$("#searchForm")).val(obj.curr);
+                    }
+
+                    if("${page.pageSize}"!=obj.limit){
+                        $("[name='pageSize']",$("#searchForm")).val(obj.limit);
+                    }
+
+                    common.commonSubmit("${formId}");
+
+                }
+
+            }
+        }
+        laypage.render(settings);
+    })
+
+</script>
+</#macro>
+ </html>

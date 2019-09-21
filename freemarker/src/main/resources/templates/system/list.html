@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <@h.commonHead title="test pagehelper"/>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css"  media="all">
+</head>
+<body>
+<p>this is a list</p>
+<form name="searchForm" id="searchForm" method="post" action="/list">
+    <input type="hidden" name="pageIndex" id="pageIndex" value="${(returnDatas.data.pageNum)!'1'}">
+    <input type="hidden" name="pageSize" id="pageSize" value="${(returnDatas.data.pageSize)!'10'}">
+
+    <div class="layui-form-item layui-inline">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-inline">
+            <input name="name" type="text" autocomplete="off" class="layui-input" value="${(returnDatas.queryBean.name)!''}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <button class="layui-btn layui-btn-normal" type="submit">
+            <i class="layui-icon"> </i>查询
+        </button>
+    </div>
+</form>
+<#if (returnsDatas??)&&(returnsDatas.data??)&&(returnsDatas.data?size>0)>
+<#assign pageInfo = returnsDatas.data>
+<#if (pageInfo.list??) && (pageInfo.list?size>0)>
+    <#list pageInfo.list as _list>
+        ${(_list.name)!''}&nbsp;${(_list.pwd)!''}<br>
+    </#list>
+</#if>
+</#if>
+
+<script src="../../static/layui/layui.js"></script>
+<script src="../../static/jquery-3.4.1.js"></script>
+<script src="../../static/common.js"></script>
+<#if returnsDatas?? && returnsDatas.data??>
+    <div id="laypageDiv" class="layui-page-my"></div>
+    <@h.pagetoolbar page=returnsDatas.data/>
+</#if>
+<script>
+
+    layui.use(['layer'],function () {
+        var layer = layui.layer;
+    })
+
+    // function search() {
+    //     $("#pageIndex").val(1);
+    //     var _action = jQuery("#searchForm").attr("action");
+    //     jQuery("#searchForm").attr("action",this.appendToken(_action)).submit();
+    //     layer.load(2)
+    // }
+</script>
+
+</body>
+</html>

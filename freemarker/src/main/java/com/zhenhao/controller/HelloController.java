@@ -36,4 +36,8 @@ public class HelloController {
     public String im(){
         return "/system/im";
     }
+    @RequestMapping("/form")
+    public String form(){
+        return "/system/form";
+    }
 }
